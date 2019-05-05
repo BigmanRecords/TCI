@@ -34,7 +34,7 @@ public class ChapterTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void whenChapterNumberHasWrongFormatThrowIllegalArgumentException(){
+    public void whenChapterNumberHasTooManyLevelsThenThrowIllegalArgumentException(){
 
         //arrange
         String name = "name";
@@ -44,5 +44,13 @@ public class ChapterTest {
         Chapter chapter = new Chapter(name,number);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void whenChapterNumberIsNullThenThrowIllegalArgumentException(){
 
+        //arrange
+        String name = "name";
+
+        //act
+        Chapter chapter = new Chapter(name,null);
+    }
 }
