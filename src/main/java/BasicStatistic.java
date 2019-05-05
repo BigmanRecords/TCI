@@ -1,15 +1,22 @@
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * very simple implementation of the BasicStatisticInterface
  */
 public class BasicStatistic implements BasicStatisticInterface {
 
+    private List<Double> dataItems;
+
     public BasicStatistic(){
 
+        this.dataItems = new ArrayList<>();
     }
 
     @Override
     public void addDoubleToData(Double valueToAdd){
 
+        this.dataItems.add(valueToAdd);
     }
 
     @Override
@@ -19,8 +26,8 @@ public class BasicStatistic implements BasicStatisticInterface {
 
     @Override
     public int numberOfDataItems(){
-        int rv = 0;
-        return rv;
+
+        return this.dataItems.size();
     }
 
     @Override
