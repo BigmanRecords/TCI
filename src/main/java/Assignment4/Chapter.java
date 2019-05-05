@@ -21,8 +21,7 @@ public class Chapter {
 
     public void setNumber(String number){
 
-        if(number == null)
-            throw new IllegalArgumentException("number cannot be null");
+        throwException("number cannot be null",number == null);
 
         int count = 0;
 
@@ -30,10 +29,7 @@ public class Chapter {
 
             if(number.charAt(i) == '.') {
                 count++;
-
-                if(count > 1){
-                    throw new IllegalArgumentException("chapter number can only have a maximum of two levels");
-                }
+                throwException("chapter number can only have a maximum of two levels",count > 1);
             }
         }
 
@@ -42,9 +38,14 @@ public class Chapter {
 
     public void setName(String name){
 
-        if(name != null)
-            this.name = name;
-        else
-            throw new IllegalArgumentException("name cannot be null");
+        throwException("name cannot be null",name == null);
+
+        this.name = name;
+    }
+
+    public void throwException(String message, Boolean value){
+
+        if(value)
+            throw new IllegalArgumentException(message);
     }
 }
