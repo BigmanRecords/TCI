@@ -53,4 +53,15 @@ public class ChapterTest {
         //act
         Chapter chapter = new Chapter(name,null);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void whenChapterNumberContainsOtherThanNumbersAndFullStopThenThrowIllegalArgumentException(){
+
+        //arrange
+        String name = "name";
+        String number = "one.2";
+
+        //act
+        Chapter chapter = new Chapter(name,number);
+    }
 }
