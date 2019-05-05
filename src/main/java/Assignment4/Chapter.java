@@ -8,6 +8,7 @@ public class Chapter {
     public Chapter(String name, String number){
 
         this.name = name;
+        this.number = number;
     }
 
     public String getName(){

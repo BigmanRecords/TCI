@@ -22,4 +22,16 @@ public class ChapterTest {
         //assert
         Assert.assertNotEquals("the chapter name cannot be null",result,null);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void whenChapterNameIsNullThrowIllegalArgumentException(){
+
+        //arrange
+        String number = "2.2";
+
+        //act
+        Chapter chapter = new Chapter(null,number);
+    }
+
+
 }
