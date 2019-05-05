@@ -8,18 +8,7 @@ public class Chapter {
     public Chapter(String name, String number){
 
         setName(name);
-
-        int count = 0;
-
-        for(int i = 0; i < number.length(); i++){
-            if(number.charAt(i) == '.')
-                count++;
-        }
-
-        if(count > 1)
-            throw new IllegalArgumentException("name cannot be null");
-
-        this.number = number;
+        setNumber(number);
     }
 
     public String getName(){
@@ -28,6 +17,24 @@ public class Chapter {
 
     public String getNumber(){
         return this.number;
+    }
+
+    public void setNumber(String number){
+
+        int count = 0;
+
+        for(int i = 0; i < number.length(); i++){
+
+            if(number.charAt(i) == '.') {
+                count++;
+
+                if(count > 1){
+                    throw new IllegalArgumentException("chapter number can only have a maximum of two levels");
+                }
+            }
+        }
+
+        this.number = number;
     }
 
     public void setName(String name){
