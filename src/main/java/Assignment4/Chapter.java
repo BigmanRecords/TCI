@@ -31,8 +31,8 @@ public class Chapter {
                 count++;
                 throwException("chapter number can only have a maximum of two levels",count > 1);
             }
-            else if(!Character.isDigit(number.charAt(i))){
-                throw new IllegalArgumentException("number contains a letter");
+            else{
+                throwException("chapter number can only have a maximum of two levels",!Character.isDigit(number.charAt(i)));
             }
         }
 
