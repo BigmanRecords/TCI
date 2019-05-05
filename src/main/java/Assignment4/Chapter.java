@@ -7,6 +7,7 @@ public class Chapter {
 
     public Chapter(){
 
+        this.name = "";
     }
 
     public String getName(){
