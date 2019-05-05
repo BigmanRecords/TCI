@@ -33,8 +33,15 @@ public class BasicStatistic implements BasicStatisticInterface {
 
     @Override
     public Double sum(){
-        double rv = 0.0;
-        return rv;
+
+        double result = 0.0;
+
+        for (Double d:dataItems) {
+
+            result += d;
+        }
+
+        return result;
     }
 
 }
