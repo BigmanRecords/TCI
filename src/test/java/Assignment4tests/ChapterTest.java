@@ -33,5 +33,16 @@ public class ChapterTest {
         Chapter chapter = new Chapter(null,number);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void whenChapterNumberHasWrongFormatThrowIllegalArgumentException(){
+
+        //arrange
+        String name = "name";
+        String number = "23.3.3";
+
+        //act
+        Chapter chapter = new Chapter(name,number);
+    }
+
 
 }
