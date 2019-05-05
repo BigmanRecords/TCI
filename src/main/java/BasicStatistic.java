@@ -22,6 +22,7 @@ public class BasicStatistic implements BasicStatisticInterface {
     @Override
     public void clearData(){
 
+        this.dataItems.clear();
     }
 
     @Override
