@@ -21,6 +21,9 @@ public class Chapter {
 
     public void setNumber(String number){
 
+        if(number == null)
+            throw new IllegalArgumentException("number cannot be null");
+
         int count = 0;
 
         for(int i = 0; i < number.length(); i++){
