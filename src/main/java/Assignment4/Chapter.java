@@ -7,9 +7,7 @@ public class Chapter {
 
     public Chapter(String name, String number){
 
-        if(name == null)
-            throw new IllegalArgumentException("name cannot be null");
-        this.name = name;
+        setName(name);
         this.number = number;
     }
 
@@ -19,5 +17,13 @@ public class Chapter {
 
     public String getNumber(){
         return this.number;
+    }
+
+    public void setName(String name){
+
+        if(name != null)
+            this.name = name;
+        else
+            throw new IllegalArgumentException("name cannot be null");
     }
 }
