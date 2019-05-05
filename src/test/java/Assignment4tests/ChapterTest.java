@@ -12,13 +12,12 @@ public class ChapterTest {
     public void whenChapterInstanceCreatedThenNameIsNotNull(){
 
         //arrange
-        String name = null;
-        String number = "2.3.4";
+        Chapter chapter = new Chapter();
 
         //act
-        Chapter chapter = new Chapter(name,number);
+        String name = chapter.getName();
 
         //assert
-        Assert.assertNotEquals("the chapter should not be null",chapter.getName(),null);
+        Assert.assertNotEquals("the chapter name cannot be null",name,null);
     }
 }
