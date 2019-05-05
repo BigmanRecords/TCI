@@ -1,3 +1,5 @@
+package Assignment2;
+
 /**
  * This utility interface is used for doing statistics calculations
  * The interface has 2 responsibilities:

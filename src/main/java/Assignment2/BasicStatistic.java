@@ -1,8 +1,10 @@
+package Assignment2;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * very simple implementation of the BasicStatisticInterface
+ * very simple implementation of the Assignment2.BasicStatisticInterface
  */
 public class BasicStatistic implements BasicStatisticInterface {
 

@@ -1,3 +1,5 @@
+package Assignment1;
+
 public class MyFirstClass {
 
     private int number;
