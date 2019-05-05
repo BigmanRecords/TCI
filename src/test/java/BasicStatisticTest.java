@@ -6,6 +6,38 @@ import static org.junit.Assert.*;
 public class BasicStatisticTest {
 
     @Test
+    public void whenItemsAddedThenReturnTheSumOfTheItems(){
+
+        //arrange
+        BasicStatistic basicStatistic = new BasicStatistic();
+        Double item1 = 2.0;
+        Double item2 = 3.0;
+        Double expected = 5.0;
+
+        //act
+        basicStatistic.addDoubleToData(item1);
+        basicStatistic.addDoubleToData(item2);
+        Double result = basicStatistic.sum();
+
+        //assert
+        Assert.assertEquals("the items added do not return the correct sum",expected,result);
+    }
+
+    @Test
+    public void whenNoItemsAddedThenReturnZero(){
+
+        //arrange
+        BasicStatistic basicStatistic = new BasicStatistic();
+        Double expected = 0.0;
+
+        //act
+        Double result = basicStatistic.sum();
+
+        //assert
+        Assert.assertEquals("the sum returned should have equalled 0",expected,result);
+    }
+
+    @Test
     public void afterAddingXDataItemsThenXAmountOfDataItemsInList(){
 
         //arrange
