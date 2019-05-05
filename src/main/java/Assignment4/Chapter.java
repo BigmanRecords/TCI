@@ -5,9 +5,9 @@ public class Chapter {
     private String name;
     private String number;
 
-    public Chapter(){
+    public Chapter(String name, String number){
 
-        this.name = "";
+        this.name = name;
     }
 
     public String getName(){
