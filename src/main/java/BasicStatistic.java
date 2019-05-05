@@ -3,6 +3,10 @@
  */
 public class BasicStatistic implements BasicStatisticInterface {
 
+    public BasicStatistic(){
+
+    }
+
     @Override
     public void addDoubleToData(Double valueToAdd){
 
