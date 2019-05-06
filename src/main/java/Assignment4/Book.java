@@ -49,6 +49,7 @@ public class Book {
     }
 
     public List<Chapter> getTableOfContents(){
-        return Collections.emptyList();
+
+        return this.chapters;
     }
 }
