@@ -32,4 +32,18 @@ public class RaceResultsServiceTest {
         verify(clientB).receive(message);
     }
 
+    @Test
+    public void unsubscribedClientShouldNotReceiveMessages() {
+
+        //act
+        resultsService.addSubscriber(clientA, RaceCategory.f1Race);
+        resultsService.removeSubscriber(clientA);
+
+        when(message.getCategory()).thenReturn(RaceCategory.f1Race);
+        resultsService.send(message);
+
+        //assert
+        verify(clientA, never()).receive(message);
+    }
+
 }
