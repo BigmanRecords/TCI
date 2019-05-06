@@ -1,6 +1,7 @@
 package Assignment4;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Book {
@@ -45,5 +46,9 @@ public class Book {
     public void addChapter(String name,String number){
 
         chapters.add(new Chapter(name,number));
+    }
+
+    public List<Chapter> getTableOfContents(){
+        return Collections.emptyList();
     }
 }
