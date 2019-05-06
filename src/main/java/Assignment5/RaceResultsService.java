@@ -46,9 +46,4 @@ public class RaceResultsService {
 
         clients.get(category).remove(client);
     }
-
-    public void logMessage(Message message){
-
-        messageLoggingService.addMessage(message);
-    }
 }
