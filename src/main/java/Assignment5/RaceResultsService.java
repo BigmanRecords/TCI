@@ -5,7 +5,7 @@ import java.util.*;
 public class RaceResultsService {
 
     private HashMap<RaceCategory, List<Client>> clients = new HashMap<>();
-    MessageLoggingService messageLoggingService = new MessageLoggingService();
+    private MessageLoggingService messageLoggingService = new MessageLoggingService();
 
     public RaceResultsService(){
 
@@ -36,7 +36,7 @@ public class RaceResultsService {
 
     public void removeSubscriber(Client client){
 
-        Boolean check = true;
+        boolean check = true;
 
         for(RaceCategory raceCategory : RaceCategory.values()){
 
@@ -45,12 +45,18 @@ public class RaceResultsService {
             }
         }
 
-        if(check)
-            throw new NoSuchElementException();
+        clientNotFound(check);
     }
 
     public void removeSubscriber(Client client, RaceCategory category){
 
-        clients.get(category).remove(client);
+        clientNotFound(!clients.get(category).remove(client));
+    }
+
+    private void clientNotFound(Boolean check){
+
+        if(check){
+            throw new NoSuchElementException("the client was not already subscribed to this service");
+        }
     }
 }
