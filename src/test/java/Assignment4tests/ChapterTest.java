@@ -86,4 +86,16 @@ public class ChapterTest {
         //assert
         Assert.assertEquals("the list was not sorted correctly",chapterOne,chapters.get(0));
     }
+
+    @Test
+    public void whenTwoObjectsAreDifferentThenTheyAreNotEqual(){
+
+        //arrange
+        Chapter chapterTwo = new Chapter("bbbbb", "2");
+        Chapter chapterOne = new Chapter("aaaaa", "1");
+
+
+        //assert
+        Assert.assertNotEquals("the two objects are should not be equal",chapterOne,chapterTwo);
+    }
 }
