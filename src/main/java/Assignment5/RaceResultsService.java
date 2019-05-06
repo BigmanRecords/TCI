@@ -29,6 +29,12 @@ public class RaceResultsService {
     }
 
     public void removeSubscriber(Client client){
-        this.clients.remove(client);
+
+        for(RaceCategory raceCategory : RaceCategory.values()){
+
+            if(clients.get(raceCategory) != null){
+                clients.get(raceCategory).remove(client);
+            }
+        }
     }
 }
