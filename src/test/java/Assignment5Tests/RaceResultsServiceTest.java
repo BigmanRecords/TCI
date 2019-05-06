@@ -14,7 +14,8 @@ public class RaceResultsServiceTest {
     private RaceResultsService resultsService = new RaceResultsService();
     private Client clientA = mock(Client.class,"Client A");
     private Client clientB = mock(Client.class,"Client B");
-    private Message message = mock(Message.class,"message");
+    private Message messageA = mock(Message.class,"message A");
+    private Message messageB = mock(Message.class,"message B");
 
 
     @Test
@@ -24,12 +25,12 @@ public class RaceResultsServiceTest {
         resultsService.addSubscriber(clientA, RaceCategory.f1Race);
         resultsService.addSubscriber(clientB, RaceCategory.motoRace);
 
-        when(message.getCategory()).thenReturn(RaceCategory.motoRace);
-        resultsService.send(message);
+        when(messageA.getCategory()).thenReturn(RaceCategory.motoRace);
+        resultsService.send(messageA);
 
         //assert
         verifyZeroInteractions(clientA);
-        verify(clientB).receive(message);
+        verify(clientB).receive(messageA);
     }
 
     @Test
@@ -39,11 +40,31 @@ public class RaceResultsServiceTest {
         resultsService.addSubscriber(clientA, RaceCategory.f1Race);
         resultsService.removeSubscriber(clientA);
 
-        when(message.getCategory()).thenReturn(RaceCategory.f1Race);
-        resultsService.send(message);
+        when(messageA.getCategory()).thenReturn(RaceCategory.f1Race);
+        resultsService.send(messageA);
 
         //assert
-        verify(clientA, never()).receive(message);
+        verify(clientA, never()).receive(messageA);
+    }
+
+    @Test
+    public void clientUnsubscribedFromCategoryShouldNotReceiveMessagesForThatCategory(){
+
+        //act
+        resultsService.addSubscriber(clientA, RaceCategory.f1Race);
+        resultsService.addSubscriber(clientA, RaceCategory.boatRace);
+
+        resultsService.removeSubscriber(clientA, RaceCategory.boatRace);
+
+        when(messageA.getCategory()).thenReturn(RaceCategory.boatRace);
+        when(messageB.getCategory()).thenReturn(RaceCategory.f1Race);
+
+        resultsService.send(messageA);
+        resultsService.send(messageB);
+
+        //assert
+        verify(clientA, never()).receive(messageA);
+        verify(clientA).receive(messageB);
     }
 
 }
