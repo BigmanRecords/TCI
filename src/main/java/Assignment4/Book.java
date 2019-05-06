@@ -7,12 +7,8 @@ public class Book {
 
     public Book(String name,String author){
 
-        if(name == null || author == null){
-            throw new IllegalArgumentException("name or author cannot be null");
-        }
-
-        this.author = author;
-        this.name = name;
+        setAuthor(author);
+        setName(name);
     }
 
     public String getAuthor() {
@@ -24,10 +20,20 @@ public class Book {
     }
 
     public void setAuthor(String author) {
+
+        if(author == null){
+            throw new IllegalArgumentException("author cannot be null");
+        }
+
         this.author = author;
     }
 
     public void setName(String name) {
+
+        if(name == null){
+            throw new IllegalArgumentException("name cannot be null");
+        }
+
         this.name = name;
     }
 }
