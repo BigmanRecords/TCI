@@ -1,22 +1,30 @@
 package Assignment5;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
+import java.util.*;
 
 public class RaceResultsService {
 
-    private Collection<Client> clients = new HashSet<>();
+    private HashMap<RaceCategory, List<Client>> clients = new HashMap<>();
 
     public void addSubscriber(Client client,RaceCategory category){
 
-        this.clients.add(client);
+        List<Client> temp = this.clients.get(category);
+
+        if(temp == null){
+            temp = new ArrayList<>();
+        }
+
+        temp.add(client);
+
+        this.clients.put(category,temp);
     }
 
     public void send(Message message){
 
-        for (Client c: this.clients ) {
-            c.recieve(message);
+        List<Client> temp = this.clients.get(message.getCategory());
+
+        for (Client c: temp) {
+            c.receive(message);
         }
     }
 

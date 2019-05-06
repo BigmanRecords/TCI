@@ -10,14 +10,15 @@ import static org.mockito.Mockito.*;
 
 public class RaceResultsServiceTest {
 
+    //arrange
+    private RaceResultsService resultsService = new RaceResultsService();
+    private Client clientA = mock(Client.class,"Client A");
+    private Client clientB = mock(Client.class,"Client B");
+    private Message message = mock(Message.class,"message");
+
+
     @Test
     public void whenUserIsSubscribedToCategoryThenUserWillOnlyReceiveMessagesForThatCategory(){
-
-        //arrange
-        RaceResultsService resultsService = new RaceResultsService();
-        Client clientA = mock(Client.class,"Client A");
-        Client clientB = mock(Client.class,"Client B");
-        Message message = mock(Message.class,"message");
 
         //act
         resultsService.addSubscriber(clientA, RaceCategory.f1Race);
@@ -28,6 +29,7 @@ public class RaceResultsServiceTest {
 
         //assert
         verifyZeroInteractions(clientA);
-        verify(clientB).recieve(message);
+        verify(clientB).receive(message);
     }
+
 }
