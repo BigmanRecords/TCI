@@ -90,4 +90,38 @@ public class RaceResultsServiceTest {
         //assert
         verify(messageLoggingService).addMessage(messageA);
     }
+
+    @Test
+    public void subscribedClientShouldReceiveMultipleMessages() {
+
+        //act
+        resultsService.addSubscriber(clientA,RaceCategory.boatRace);
+
+        when(messageA.getCategory()).thenReturn(RaceCategory.boatRace);
+
+        for(int i = 0; i < 10; i++){
+            resultsService.send(messageA);
+        }
+
+        //assert
+        verify(clientA,times(10)).receive(messageA);
+    }
+
+    @Test
+    public void allSubscribedClientsShouldReceiveMultipleMessages() {
+
+        //act
+        resultsService.addSubscriber(clientA,RaceCategory.boatRace);
+        resultsService.addSubscriber(clientB,RaceCategory.boatRace);
+
+        when(messageA.getCategory()).thenReturn(RaceCategory.boatRace);
+
+        for(int i = 0; i < 10; i++){
+            resultsService.send(messageA);
+        }
+
+        //assert
+        verify(clientA,times(10)).receive(messageA);
+        verify(clientB,times(10)).receive(messageA);
+    }
 }
