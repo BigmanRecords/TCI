@@ -17,4 +17,12 @@ public class BookTest {
 
         Book book = new Book("name","");
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void whenInvalidNameOrNumberOfChapterThenThrowIllegalArgumentException(){
+
+        Book book = new Book("name","author");
+
+        book.addChapter("name","2.2.2");
+    }
 }
