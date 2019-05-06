@@ -4,6 +4,10 @@ import Assignment4.Chapter;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import static org.mockito.Mockito.verify;
 
 public class ChapterTest {
@@ -63,5 +67,23 @@ public class ChapterTest {
 
         //act
         Chapter chapter = new Chapter(name,number);
+    }
+
+    @Test
+    public void whenChaptersAreSortedThenChaptersAreInOrderByNumberAndThenName(){
+
+        //arrange
+        Chapter chapterTwo = new Chapter("bbbbb", "2");
+        Chapter chapterOne = new Chapter("aaaaa", "1");
+
+        List<Chapter> chapters = new ArrayList<>();
+        chapters.add(chapterTwo);
+        chapters.add(chapterOne);
+
+        //act
+        Collections.sort(chapters);
+
+        //assert
+        Assert.assertEquals("the list was not sorted correctly",chapterOne,chapters.get(0));
     }
 }

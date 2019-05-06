@@ -1,6 +1,9 @@
 package Assignment4;
 
-public class Chapter {
+import org.junit.runner.manipulation.Sortable;
+import org.junit.runner.manipulation.Sorter;
+
+public class Chapter implements Comparable<Chapter> {
 
     private String name;
     private String number;
@@ -50,5 +53,10 @@ public class Chapter {
 
         if(value)
             throw new IllegalArgumentException(message);
+    }
+
+    @Override
+    public int compareTo(Chapter o) {
+        return 0;
     }
 }
