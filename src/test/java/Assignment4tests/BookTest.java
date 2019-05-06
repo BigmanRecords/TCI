@@ -10,4 +10,11 @@ public class BookTest {
 
         Book book = new Book(null,"author");
     }
+
+
+    @Test(expected = IllegalArgumentException.class)
+    public void whenNameOrAuthorIsEmptyStringThenThrowIllegalArgumentException(){
+
+        Book book = new Book("name","");
+    }
 }
