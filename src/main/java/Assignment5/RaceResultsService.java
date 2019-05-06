@@ -41,5 +41,6 @@ public class RaceResultsService {
 
     public void removeSubscriber(Client client, RaceCategory category){
 
+        clients.get(category).remove(client);
     }
 }
