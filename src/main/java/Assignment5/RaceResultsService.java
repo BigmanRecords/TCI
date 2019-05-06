@@ -6,13 +6,16 @@ public class RaceResultsService {
 
     private HashMap<RaceCategory, List<Client>> clients = new HashMap<>();
 
+    public RaceResultsService(){
+
+        for(RaceCategory raceCategory : RaceCategory.values()){
+            this.clients.put(raceCategory,new ArrayList<>());
+        }
+    }
+
     public void addSubscriber(Client client,RaceCategory category){
 
         List<Client> temp = this.clients.get(category);
-
-        if(temp == null){
-            temp = new ArrayList<>();
-        }
 
         temp.add(client);
 
@@ -32,9 +35,7 @@ public class RaceResultsService {
 
         for(RaceCategory raceCategory : RaceCategory.values()){
 
-            if(clients.get(raceCategory) != null){
-                clients.get(raceCategory).remove(client);
-            }
+            clients.get(raceCategory).remove(client);
         }
     }
 }
