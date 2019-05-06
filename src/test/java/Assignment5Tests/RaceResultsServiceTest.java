@@ -1,9 +1,6 @@
 package Assignment5Tests;
 
-import Assignment5.Client;
-import Assignment5.Message;
-import Assignment5.RaceCategory;
-import Assignment5.RaceResultsService;
+import Assignment5.*;
 import org.junit.Test;
 
 import static org.mockito.Mockito.*;
@@ -67,4 +64,17 @@ public class RaceResultsServiceTest {
         verify(clientA).receive(messageB);
     }
 
+    @Test
+    public void whenMessageSentByResultsServiceThenMessageIsLogged(){
+
+        //act
+        MessageLoggingService messageLoggingService = mock(MessageLoggingService.class);
+        resultsService.addSubscriber(clientA,RaceCategory.boatRace);
+
+        when(messageA.getCategory()).thenReturn(RaceCategory.boatRace);
+        resultsService.send(messageA);
+
+        //assert
+        verify(messageLoggingService).addMessage(messageA);
+    }
 }
