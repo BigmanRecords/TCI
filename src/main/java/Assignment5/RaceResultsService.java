@@ -5,6 +5,7 @@ import java.util.*;
 public class RaceResultsService {
 
     private HashMap<RaceCategory, List<Client>> clients = new HashMap<>();
+    MessageLoggingService messageLoggingService = new MessageLoggingService();
 
     public RaceResultsService(){
 
@@ -26,6 +27,8 @@ public class RaceResultsService {
 
         List<Client> temp = this.clients.get(message.getCategory());
 
+        messageLoggingService.addMessage(message);
+
         for (Client c: temp) {
             c.receive(message);
         }
@@ -42,5 +45,10 @@ public class RaceResultsService {
     public void removeSubscriber(Client client, RaceCategory category){
 
         clients.get(category).remove(client);
+    }
+
+    public void logMessage(Message message){
+
+        messageLoggingService.addMessage(message);
     }
 }
