@@ -57,6 +57,12 @@ public class Chapter implements Comparable<Chapter> {
 
     @Override
     public int compareTo(Chapter o) {
-        return 0;
+
+        int check = this.number.compareTo(o.getNumber());
+
+        if(check == 0)
+            return this.name.compareTo(o.getName());
+        else
+            return check;
     }
 }
