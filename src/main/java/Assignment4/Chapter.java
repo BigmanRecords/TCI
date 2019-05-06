@@ -68,12 +68,20 @@ public class Chapter implements Comparable<Chapter> {
 
     @Override
     public boolean equals(Object o){
-        return true;
+
+        Chapter temp = (Chapter) o;
+
+        if(this.name.equals(temp.name) && this.number.equals(temp.number)){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     @Override
     public int hashCode(){
-        return 1;
 
+        return this.number.hashCode() * this.name.hashCode();
     }
 }
