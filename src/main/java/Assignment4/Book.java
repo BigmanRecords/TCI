@@ -1,9 +1,13 @@
 package Assignment4;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Book {
 
     private String author;
     private String name;
+    private List<Chapter> chapters = new ArrayList<>();
 
     public Book(String name,String author){
 
@@ -40,5 +44,6 @@ public class Book {
 
     public void addChapter(String name,String number){
 
+        chapters.add(new Chapter(name,number));
     }
 }
