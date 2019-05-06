@@ -36,10 +36,17 @@ public class RaceResultsService {
 
     public void removeSubscriber(Client client){
 
+        Boolean check = true;
+
         for(RaceCategory raceCategory : RaceCategory.values()){
 
-            clients.get(raceCategory).remove(client);
+            if(clients.get(raceCategory).remove(client)){
+                check = false;
+            }
         }
+
+        if(check)
+            throw new NoSuchElementException();
     }
 
     public void removeSubscriber(Client client, RaceCategory category){
