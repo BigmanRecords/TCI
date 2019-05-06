@@ -8,6 +8,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import java.util.NoSuchElementException;
+
 import static org.mockito.Mockito.*;
 
 public class RaceResultsServiceTest {
@@ -123,5 +125,12 @@ public class RaceResultsServiceTest {
         //assert
         verify(clientA,times(10)).receive(messageA);
         verify(clientB,times(10)).receive(messageA);
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void whenUnsubscribedClientTriesToUnsubscribeThenThrowException(){
+
+        //act
+        resultsService.removeSubscriber(clientA);
     }
 }
