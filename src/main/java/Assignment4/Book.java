@@ -21,7 +21,7 @@ public class Book {
 
     public void setAuthor(String author) {
 
-        if(author == null){
+        if(author == null || !author.equals("")){
             throw new IllegalArgumentException("author cannot be null");
         }
 
@@ -30,7 +30,7 @@ public class Book {
 
     public void setName(String name) {
 
-        if(name == null){
+        if(name == null || !name.equals("")){
             throw new IllegalArgumentException("name cannot be null");
         }
 
