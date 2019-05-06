@@ -50,6 +50,8 @@ public class Book {
 
     public List<Chapter> getTableOfContents(){
 
+        Collections.sort(this.chapters);
+
         return this.chapters;
     }
 }
