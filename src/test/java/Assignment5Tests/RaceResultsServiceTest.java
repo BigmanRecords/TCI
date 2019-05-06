@@ -28,6 +28,7 @@ public class RaceResultsServiceTest {
 
     @Before
     public void init(){
+        //inject the mocks needed by the service
         MockitoAnnotations.initMocks(this);
     }
 
